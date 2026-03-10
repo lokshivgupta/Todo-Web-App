@@ -1,6 +1,8 @@
 import express from 'express'; 
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import authRoutes from './routes/authRoutes.js';
+import todoRoutes from './routes/todoRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,6 +25,11 @@ app.use(express.static(publicPath));
 app.get('/', (req,res)=>{
     res.sendFile(path.join(publicPath, 'index.html'))// constructs the full path to index.html (chapter_3/public/index.html)
 })
+
+
+//Route 
+app.use('/auth', authRoutes);
+app.use('/todos', todoRoutes);
 
 app.listen(PORT, ()=>{
     console.log(`Server has started on port ${PORT}`)
