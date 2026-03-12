@@ -6,16 +6,16 @@ POST http://localhost:3000/auth/register
 Content-Type: application/json
 
 {
-    "username": "lokshivgupta",
+    "username": "lokshivgupta@gmail.com",
     "password": "12312312"
 }
 ###
-POST http://localhost:3000/auth/register
+
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "lokshivgupta",
+    "username": "lokshivgupta@gmail.com",
     "password": "12312312"
 }
-
 ###

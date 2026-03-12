@@ -18,6 +18,7 @@ const publicPath = path.join(rootDir, 'public');
 
 //Middleware 
 app.use(express.json());
+
 //Serves the HTML file from /public library
 //tells express to serve all the files from the public folder as static assets
 app.use(express.static(publicPath));
