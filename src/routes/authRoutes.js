@@ -47,7 +47,7 @@ router.post('/login', (req,res)=>{
 
     try{
 
-        const getUser = db.prepare('SELECT *  FROM  user WHERE username = ?')
+        const getUser = db.prepare('SELECT *  FROM  user WHERE userName = ?')
         const user = getUser.get(username);
 
         if(!user){

@@ -178,6 +178,7 @@
         // access email and pass values
         const emailVal = email.value
         const passVal = password.value
+        
 
         // guard clauses... if authenticating, return
         if (
@@ -196,15 +197,20 @@
 
         try {
             let data
+
+           
             if (isRegistration) {
                 // register an account
+            
                 const response = await fetch(apiBase + 'auth/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username: emailVal, password: passVal })
                 })
-                data = await response.json()
+                data = await response.json();
+                
             } else {
+                
                 // login an account
                 const response = await fetch(apiBase + 'auth/login', {
                     method: 'POST',
