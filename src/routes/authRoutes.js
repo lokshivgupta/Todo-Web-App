@@ -8,14 +8,14 @@ const router = express.Router();
 
 //Register a new user endpoint /auth/register
 router.post('/register' , (req,res) =>{
-    const {username,password} = req.body
+    const { username,password } = req.body
 
     //encrypt the password 
     const hashedPass = bcrypt.hashSync(password,8);
 
     //save the new user and hash the password
     try{
-        const insertUser = db.prepare(`INSERT INTO user(userName,password)
+        const insertUser = db.prepare(`INSERT INTO users(username,password)
         VALUES (?,?)`
         )
         const result = insertUser.run(username,hashedPass);
@@ -29,7 +29,7 @@ router.post('/register' , (req,res) =>{
         insertTodo.run(result.lastInsertRowid,defaultTodo);
 
         //create a token
-        const token = jwt.sign({id:result.lastInsertRowid}, process.env.JWT_SECRET, {expiresIn : '24h'});
+        const token = jwt.sign({id: result.lastInsertRowid}, process.env.JWT_SECRET, {expiresIn : '24h'});
         res.json({ token });
     }catch(err){
         console.log(err.message);
@@ -47,7 +47,7 @@ router.post('/login', (req,res)=>{
 
     try{
 
-        const getUser = db.prepare('SELECT *  FROM  user WHERE userName = ?')
+        const getUser = db.prepare('SELECT *  FROM  users WHERE username = ?')
         const user = getUser.get(username);
 
         if(!user){

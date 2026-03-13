@@ -18,4 +18,16 @@ Content-Type: application/json
     "username": "lokshivgupta@gmail.com",
     "password": "12312312"
 }
-###
+### fetch all the todos GET /TODOS (protected)
+
+GET http://localhost:3000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczMzY3OTM0LCJleHAiOjE3NzM0NTQzMzR9.KnqsK424z3yTJ7y1zRvthqcalN8fFrWxSZuXT2GHdWU
+
+### Creates a new Todo (protected)
+POST http://localhost:3000/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzczMzY3MDcxLCJleHAiOjE3NzM0NTM0NzF9.Y9tmJDf81aydscqTr3WKtvozsP7VCpGI_Cg2AAsP0mk
+Content-Type: application/json
+
+{
+    "task": "finish the coding project"
+}
